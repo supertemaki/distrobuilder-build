@@ -1,0 +1,19 @@
+# Action to build lxd images
+---
+name: build lxd images
+
+on:
+  # Allows manual workflow run (must in default branch to work)
+  workflow_dispatch:
+
+jobs:
+  build-lxd-images:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          repository: supertemaki/lxd-ci
+  
+      - name: build
+        uses: supertemaki/distrobuilder-build@main

@@ -1,0 +1,19 @@
+---
+name: Distrobuilder build lxd image container
+description: Build lxd image container
+inputs:
+  command:
+    description: Command to run
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: run image builder
+      shell: bash
+      run: |
+        docker run \
+          --rm \
+          --privileged \
+          --volume ${{ github.workspace }}:/data \
+          ghcr.io/${{ github.repository }}
