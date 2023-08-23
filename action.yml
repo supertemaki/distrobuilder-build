@@ -16,4 +16,4 @@ runs:
           --rm \
           --privileged \
           --volume ${{ github.workspace }}:/data \
-          ghcr.io/${{ github.repository }}
+          ghcr.io/supertemaki/distrobuilder-build
