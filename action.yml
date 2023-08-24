@@ -12,9 +12,8 @@ runs:
     - name: run image builder
       shell: bash
       run: |
-        env
-        #docker run \
-        #  --rm \
-        #  --privileged \
-        #  --volume ${{ github.workspace }}:/data \
-        #  ghcr.io/supertemaki/distrobuilder-build
+        docker run \
+          --rm \
+          --privileged \
+          --volume ${{ github.workspace }}:/data \
+          ghcr.io/supertemaki/distrobuilder-build
