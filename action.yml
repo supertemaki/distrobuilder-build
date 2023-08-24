@@ -4,7 +4,7 @@ description: Build lxd image container
 inputs:
   repo:
     description: repo
-    default: ${{ github.action.repository }}
+    default: ${{ github.action_repository }}
     required: true
 
 runs:
