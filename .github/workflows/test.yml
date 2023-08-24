@@ -11,8 +11,4 @@ jobs:
 
     steps:
     
-      - run: |
-          echo ${{ github.action_repository }}
-          echo ${{ github.action.repository }}
-          echo $GITHUB_ACTION_REPOSITORY
-          env
+      - uses: supertemaki/distrobuilder-build@main
