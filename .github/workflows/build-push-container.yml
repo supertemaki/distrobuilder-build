@@ -15,7 +15,7 @@ jobs:
     permissions:
       packages: write
       contents: read
-    
+
     env:
       IMAGE_NAME: ${{ github.event.repository.name }}
       IMAGE_TAGS: latest ${{ github.sha }}
@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v3
-    
+
       # Build image using Buildah action
       - name: Build Image
         id: build-image
@@ -36,7 +36,7 @@ jobs:
           tags: ${{ env.IMAGE_TAGS }}
           containerfiles: |
             ./Dockerfile
-    
+
       # Podman Login action (https://github.com/redhat-actions/podman-login) also be used to log in,
       # in which case 'username' and 'password' can be omitted.
       - name: Push to ghrc
@@ -48,7 +48,7 @@ jobs:
           registry: ${{ env.IMAGE_REGISTRY }}
           username: ${{ env.REGISTRY_USER }}
           password: ${{ env.REGISTRY_PASSWORD }}
-  
+
       - name: Print image url
         run: echo "Image pushed to ${{ steps.push-to-ghrc.outputs.registry-paths }}"
 
