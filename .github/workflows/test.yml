@@ -12,3 +12,6 @@ jobs:
     steps:
     
       - uses: supertemaki/distrobuilder-build@main
+      - run: |
+          echo $GITHUB_ACTION_REPOSITORY
+          echo $GITHUB_ACTION_REF
