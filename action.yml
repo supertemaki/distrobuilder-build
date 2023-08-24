@@ -17,4 +17,4 @@ runs:
           --rm \
           --privileged \
           --volume ${{ github.workspace }}:/data \
-          ghcr.io/${{ inputs.command }}
+          ghcr.io/${{ inputs.repo }}
