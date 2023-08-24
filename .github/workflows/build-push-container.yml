@@ -19,7 +19,7 @@ jobs:
     env:
       IMAGE_NAME: ${{ github.event.repository.name }}
       IMAGE_TAGS: ${{ github.sha }} latest
-      IMAGE_REGISTRY: ghcr.io docker.io
+      IMAGE_REGISTRY: ghcr.io
       REGISTRY_USER: ${{ github.repository_owner }}
       REGISTRY_PASSWORD: ${{ github.token }}
 
