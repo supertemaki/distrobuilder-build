@@ -26,10 +26,6 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v3
-        
-      - run: |
-          echo ${{ github.action_repository }}
-          echo ${{ github.action.repository }}
     
       # Build image using Buildah action
       - name: Build Image
