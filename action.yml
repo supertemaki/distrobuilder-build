@@ -16,4 +16,4 @@ runs:
           --rm \
           --privileged \
           --volume ${{ github.workspace }}:/data \
-          ghcr.io/${{ env.GITHUB_ACTION_REPOSITORY }}
+          ghcr.io/$GITHUB_ACTION_REPOSITORY
