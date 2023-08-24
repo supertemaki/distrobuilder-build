@@ -25,7 +25,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ github.event.repository.name }}
-          tags: latest ${{ github.short.sha }}
+          tags: latest ${{ github.sha }}
           containerfiles: |
             ./Dockerfile
 
