@@ -15,7 +15,6 @@ inputs:
     default: ${{ github.workspace }}
     required: true
 
-
 runs:
   using: composite
   steps:
