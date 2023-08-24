@@ -3,9 +3,9 @@ name: Build and push container image
 
 on:
   #push:
-    #branches:
-      #- main
-      #- master
+  #branches:
+  #- main
+  #- master
   workflow_dispatch:
 
 jobs:
@@ -32,7 +32,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v4
@@ -42,7 +42,7 @@ jobs:
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
           images: |
             ghcr.io/${{ github.repository }}
-      
+
       - name: Build and push container image
         uses: docker/build-push-action@v4
         with:
@@ -50,4 +50,3 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
