@@ -2,9 +2,10 @@
 name: Distrobuilder build lxd image container
 description: Build lxd image container
 inputs:
-  command:
-    description: Command to run
-    required: false
+  repo:
+    description: repo
+    default: ${{ github.action.repository }}
+    required: true
 
 runs:
   using: composite
@@ -16,4 +17,4 @@ runs:
           --rm \
           --privileged \
           --volume ${{ github.workspace }}:/data \
-          ghcr.io/supertemaki/distrobuilder-build
+          ghcr.io/{{ github.inputs.command }}
