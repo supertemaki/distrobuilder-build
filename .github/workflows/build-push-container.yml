@@ -26,7 +26,8 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v3
-        run: |
+        
+      - run: |
           echo ${{ github.action_repository }}
           echo ${{ github.action.repository }}
     
