@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-push-image:
-    name: Build and push container image
+    name: Build push container image
     runs-on: ubuntu-22.04
     permissions:
       packages: write
