@@ -6,5 +6,5 @@ for file in ./images/*.{yml,yaml}; do
 	distrobuilder build-lxd "$file" distrobuilder.output --cache-dir distrobuilder.cache \
 		--type=unified \
 		--options=image.architecture=x86_64 \
-		--options=image.release=38 \
+		--options=image.release=38
 done
