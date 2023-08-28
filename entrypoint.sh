@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-set -eux
+set -ex
+#set -u
 
 args=(
     build-lxd "$file"
