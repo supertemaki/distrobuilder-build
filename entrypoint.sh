@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 set -eux
 
+# Loop all the *.yml and *yaml files
+# inside the images directory relative
+# to working directory
+for file in ./images/*.{yml,yaml}; do
+        # Verify if output is not empty and continue
+	[[ -e "$file" ]] || continue
+	distrobuilder "${args[@]}"
+done
+
 args=(
     build-lxd "$file"
 
@@ -15,12 +24,3 @@ args=(
     --options=image.architecture=x86_64
     --options=image.release=38
 )
-
-# Loop all the *.yml and *yaml files
-# inside the images directory relative
-# to working directory
-for file in ./images/*.{yml,yaml}; do
-        # Verify if output is not empty and continue
-	[[ -e "$file" ]] || continue
-	distrobuilder "${args[@]}"
-done
