@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -eux
 
-args 
 # Loop all the *.yml and *yaml files
 # inside the images directory relative
 # to working directory
