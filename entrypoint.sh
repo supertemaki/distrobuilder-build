@@ -7,11 +7,8 @@ set -eux
 for file in ./images/*.{yml,yaml}; do
         # Verify if output is not empty and continue
 	[[ -e "$file" ]] || continue
-	distrobuilder "${args[@]}"
-done
-
-args=(
-    build-lxd "$file"
+        args=(
+	build-lxd "$file"
 
     # Directory to output images
     distrobuilder.output
@@ -24,3 +21,7 @@ args=(
     --options=image.architecture=x86_64
     --options=image.release=38
 )
+	distrobuilder "${args[@]}"
+done
+
+
