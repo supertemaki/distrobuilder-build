@@ -11,8 +11,8 @@ args=(
     --cache-dir distrobuilder.cache
 
     # Need to adjust below to variables
-    --type=unified \ 
-    --options=image.architecture=x86_64 \
+    --type=unified
+    --options=image.architecture=x86_64
     --options=image.release=38
 )
 
