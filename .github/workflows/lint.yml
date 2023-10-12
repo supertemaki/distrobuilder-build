@@ -51,11 +51,18 @@ jobs:
 
     steps:
 
+      - uses: wow-actions/use-app-token@v2
+        id: generate-token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
       # Git Checkout
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          #token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          token: ${{ steps.generate-token.outputs.bot_token }}
 
           # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to
           # improve performance
@@ -109,12 +116,6 @@ jobs:
           path: |
             megalinter-reports
             mega-linter.log
-
-      - uses: wow-actions/use-app-token@v2
-        id: generate-token
-        with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
        
       # Create pull request if applicable
       # (for now works only on PR from same repository, not from forks)
