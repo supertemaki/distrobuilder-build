@@ -137,7 +137,7 @@ jobs:
           author: ${{ steps.generate-token.outputs.bot_name }}[bot] <142896942+${{ steps.generate-token.outputs.bot_name }}[bot]@users.noreply.github.com>
           committer: ${{ steps.generate-token.outputs.bot_name }}[bot] <142896942+${{ steps.generate-token.outputs.bot_name }}[bot]@users.noreply.github.com>
           signoff: true
-          branch: "create-pull-request/fix(lint)-bot"
+          branch: "megalinter/fix(lint)-bot"
           delete-branch: true
           commit-message: "fix(lint): bot apply linters automatic fixes"
           title: "fix(lint): bot apply linters automatic fixes"
