@@ -8,9 +8,9 @@ name: MegaLinter
 on:
   # Comment this line to trigger action only on pull-requests
   # (not recommended if you don't pay for GH Actions)
-  push:
-    branches-ignore:
-      - "**/patch"
+  #push:
+  #  branches-ignore:
+  #    - "**/patch"
 
   pull_request:
     branches:
@@ -31,7 +31,7 @@ env:
 
   # If APPLY_FIXES is used, defines if the fixes are directly committed (commit)
   # or posted in a PR (pull_request)
-  APPLY_FIXES_MODE: pull_request
+  APPLY_FIXES_MODE: commit
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -39,9 +39,6 @@ concurrency:
 
 jobs:
   megalinter:
-    if: ${{ !contains (github.event.pull_request.head.ref, 'patch') }}
-    #if: ${{ !contains (github.event.pull_request.labels, 'bot') }}
-    #if: "${{ github.event.pull_request.head.ref != '**/main' }}"
     name: MegaLinter
     runs-on: ubuntu-22.04
 
@@ -53,41 +50,42 @@ jobs:
       pull-requests: write
 
     steps:
+
       # Git Checkout
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
           # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to
           # improve performance
-          fetch-depth: 0
+          #fetch-depth: 0
 
       # MegaLinter
       - name: MegaLinter
 
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/flavors/
-        uses: oxsecurity/megalinter@v7
+        uses: oxsecurity/megalinter/cupcake@v7
 
         id: ml
 
         # All available variables are described in documentation
         # https://megalinter.io/configuration/
         env:
+
           # Validates all source when push on main, else just the git diff with
           # main. Override with true if you always want to lint all sources
           #
           # To validate the entire codebase, set to:
-          # VALIDATE_ALL_CODEBASE: true
+          VALIDATE_ALL_CODEBASE: true
           #
           # To validate only diff with main, set to:
           # VALIDATE_ALL_CODEBASE: >-
           #   ${{
           #     github.event_name == 'push' &&
-          #     github.ref == 'refs/heads/main'
+          #     contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)
           #   }}
-          VALIDATE_ALL_CODEBASE: true
 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -139,8 +137,10 @@ jobs:
           author: ${{ steps.generate-token.outputs.bot_name }}[bot] <142896942+${{ steps.generate-token.outputs.bot_name }}[bot]@users.noreply.github.com>
           committer: ${{ steps.generate-token.outputs.bot_name }}[bot] <142896942+${{ steps.generate-token.outputs.bot_name }}[bot]@users.noreply.github.com>
           signoff: true
-          commit-message: "[MegaLinter] Apply linters automatic fixes"
-          title: "[MegaLinter] Apply linters automatic fixes"
+          branch: "create-pull-request/fix(lint)-bot"
+          delete-branch: true
+          commit-message: "fix(lint): bot apply linters automatic fixes"
+          title: "fix(lint): bot apply linters automatic fixes"
           labels: bot
 
       - name: Create PR output
@@ -169,7 +169,7 @@ jobs:
             env.APPLY_FIXES_EVENT == github.event_name
           ) &&
           env.APPLY_FIXES_MODE == 'commit' &&
-          github.ref != 'refs/heads/main' &&
+          (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)) &&
           (
             github.event_name == 'push' ||
             github.event.pull_request.head.repo.full_name == github.repository
@@ -185,7 +185,7 @@ jobs:
             env.APPLY_FIXES_EVENT == github.event_name
           ) &&
           env.APPLY_FIXES_MODE == 'commit' &&
-          github.ref != 'refs/heads/main' &&
+          (!contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)) &&
           (
             github.event_name == 'push' ||
             github.event.pull_request.head.repo.full_name == github.repository
@@ -197,6 +197,7 @@ jobs:
               github.head_ref ||
               github.ref
             }}
-          commit_message: "[MegaLinter] Apply linters fixes"
-          commit_user_name: megalinter-bot
-          commit_user_email: nicolas.vuillamy@ox.security
+          commit_author: ${{ steps.generate-token.outputs.bot_name }}[bot] <142896942+${{ steps.generate-token.outputs.bot_name }}[bot]@users.noreply.github.com>
+          commit_message: "fix(lint): bot apply linters automatic fixes"
+          commit_user_name: ${{ steps.generate-token.outputs.bot_name }}[bot]
+          commit_user_email: 142896942+${{ steps.generate-token.outputs.bot_name }}[bot]@users.noreply.github.com
