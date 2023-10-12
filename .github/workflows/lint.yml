@@ -50,7 +50,6 @@ jobs:
       pull-requests: write
 
     steps:
-
       - uses: wow-actions/use-app-token@v2
         id: generate-token
         with:
@@ -80,7 +79,6 @@ jobs:
         # All available variables are described in documentation
         # https://megalinter.io/configuration/
         env:
-
           # Validates all source when push on main, else just the git diff with
           # main. Override with true if you always want to lint all sources
           #
@@ -116,7 +114,7 @@ jobs:
           path: |
             megalinter-reports
             mega-linter.log
-       
+
       # Create pull request if applicable
       # (for now works only on PR from same repository, not from forks)
       #- name: Create Pull Request with applied fixes
@@ -159,7 +157,7 @@ jobs:
       #  run: |
       #    echo "PR Number - ${{ steps.cpr.outputs.pull-request-number }}"
       #    echo "PR URL - ${{ steps.cpr.outputs.pull-request-url }}"
-         
+
       # Push new commit if applicable
       # (for now works only on PR from same repository, not from forks)
       - name: Prepare commit
