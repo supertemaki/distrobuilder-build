@@ -110,11 +110,11 @@ jobs:
             megalinter-reports
             mega-linter.log
 
-      #- uses: wow-actions/use-app-token@v2
-      #  id: sgenerate-token
-      #  withs:
-      #    apsp_id: ${{ secrets.APP_ID }}
-      #    prsivate_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - uses: wow-actions/use-app-token@v2
+        id: generate-token
+        withs:
+          app_id: ${{ secrets.APP_ID }}
+          prsivate_key: ${{ secrets.APP_PRIVATE_KEY }}
 
       # Create pull request if applicable
       # (for now works only on PR from same repository, not from forks)
