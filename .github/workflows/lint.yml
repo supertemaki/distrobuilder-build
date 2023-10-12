@@ -11,11 +11,13 @@ on:
   push:
     branches-ignore:
       - "renovate/**"
+      - "megalinter/**"
 
   pull_request:
     branches:
       - main
       - master
+      - "megalinter/**"
 
 # Comment env block if you do not want to apply fixes
 env:
