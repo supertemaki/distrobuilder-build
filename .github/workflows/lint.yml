@@ -112,7 +112,7 @@ jobs:
 
       - uses: wow-actions/use-app-token@v2
         id: generate-token
-        withs:
+        with:
           app_id: ${{ secrets.APP_ID }}
           prsivate_key: ${{ secrets.APP_PRIVATE_KEY }}
        
