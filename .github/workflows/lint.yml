@@ -115,7 +115,7 @@ jobs:
         withs:
           app_id: ${{ secrets.APP_ID }}
           prsivate_key: ${{ secrets.APP_PRIVATE_KEY }}
-
+       
       # Create pull request if applicable
       # (for now works only on PR from same repository, not from forks)
       #- name: Create Pull Request with applied fixes
