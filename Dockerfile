@@ -1,12 +1,12 @@
 # Test case for check skip via comment
 # checkov:skip=CKV_DOCKER_3:Ensure that a user for the container has been created
+# kics-scan ignore-line
 FROM alpine:3.18.4
 
+# kics-scan ignore-line
 RUN \
     apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
-        distrobuilder
-
-RUN \
+        distrobuilder &&
     apk add --no-cache \
         bash \
         git \
