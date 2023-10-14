@@ -1,20 +1,20 @@
 FROM alpine:3.18.4
 
 RUN \
-  apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
-	   distrobuilder
+    apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
+        distrobuilder
 
 RUN \
-  apk add --no-cache \
-	   bash \
-	   git \
-	   rsync \
-	   tar
+    apk add --no-cache \
+        bash \
+        git \
+        rsync \
+        tar
 
 RUN \
-  mkdir /data
+    mkdir /workdir
 
-WORKDIR /data
+WORKDIR /workdir
 
 COPY entrypoint.sh /usr/bin/entrypoint.sh
 
