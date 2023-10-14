@@ -3,6 +3,9 @@
 ---
 name: MegaLinter
 
+# Disable permissions for all of the available scopes
+permissions: {}
+
 # Trigger mega-linter at every push. Action will also be visible from Pull
 # Requests to main
 on:

@@ -1,6 +1,9 @@
 ---
 name: Build and push container image
 
+# Disable permissions for all of the available scopes
+permissions: {}
+
 on:
   #push:
   #  branches:
