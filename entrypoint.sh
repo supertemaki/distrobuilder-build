@@ -8,7 +8,7 @@ for file in ./images/*.{yml,yaml}; do
     # Verify if output is not empty and continue
     [[ -e "$file" ]] || continue
     args=(
-        build-incus "$file"
+        build-lxd "$file"
 
         # Directory to output images
         distrobuilder.output
