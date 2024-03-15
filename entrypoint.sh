@@ -4,6 +4,7 @@ set -eux
 # Loop all the *.yml and *yaml files
 # inside the images directory relative
 # to working directory
+tree
 for file in ./images/*.{yml,yaml}; do
     # Verify if output is not empty and continue
     [[ -e "$file" ]] || continue
