@@ -19,7 +19,7 @@ for file in ./images/*.{yml,yaml}; do
         # Need to adjust below to variables
         --type=unified
         --options=image.architecture=x86_64
-        --options=image.release=38
+        --options=image.release=39
         --options=image.variant=podman
     )
     distrobuilder "${args[@]}"
