@@ -11,7 +11,8 @@ RUN \
         git \
         rsync \
         tar \
-        tree
+        tree \
+        squashfs-tools
 
 RUN \
     mkdir /workdir

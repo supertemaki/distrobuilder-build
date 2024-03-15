@@ -8,7 +8,7 @@ for file in ./images/*.{yml,yaml}; do
     # Verify if output is not empty and continue
     [[ -e "$file" ]] || continue
     args=(
-        build-incus "$file"
+        build-lxd "$file"
 
         # Directory to output images
         distrobuilder.output
@@ -17,9 +17,9 @@ for file in ./images/*.{yml,yaml}; do
         --cache-dir distrobuilder.cache
 
         # Need to adjust below to variables
-        --type=unified
+        #--type=unified
         --options=image.architecture=x86_64
-        --options=image.release=39
+        --options=image.release=40
         --options=image.variant=podman
     )
     distrobuilder "${args[@]}"
