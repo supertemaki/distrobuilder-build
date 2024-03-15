@@ -4,10 +4,9 @@ FROM alpine:3.19.1
 
 # kics-scan ignore-line
 RUN \
-#    apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
-#        distrobuilder && \
+    apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
+        distrobuilder && \
     apk add --no-cache \
-        distrobuilder \
         bash \
         git \
         rsync \
