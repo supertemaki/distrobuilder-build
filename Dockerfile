@@ -10,7 +10,8 @@ RUN \
         bash \
         git \
         rsync \
-        tar
+        tar \
+        tree
 
 RUN \
     mkdir /workdir
