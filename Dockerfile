@@ -1,6 +1,6 @@
 # checkov:skip=CKV_DOCKER_3:Ensure that a user for the container has been created
 # kics-scan ignore-line
-FROM alpine:3.20.1
+FROM alpine:3.20.3
 
 # kics-scan ignore-line
 RUN \
