@@ -4,7 +4,7 @@ FROM alpine:3.20.3
 
 # kics-scan ignore-line
 RUN \
-    apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing \
+    apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
         distrobuilder && \
     apk add --no-cache \
         bash \
