@@ -1,6 +1,6 @@
 ---
-name: Distrobuilder build lxd image container
-description: Build lxd image container
+name: Distrobuilder build incus image container
+description: Build incus image container
 inputs:
   registry:
     description: Registry to use for pull container
@@ -24,5 +24,5 @@ runs:
         docker run \
           --rm \
           --privileged \
-          --volume ${{ inputs.data }}:/workdir \
+          --volume ${{ inputs.data }}/images:/workdir/images:ro \
           ${{ inputs.registry }}/${{ inputs.image }}
