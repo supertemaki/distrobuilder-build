@@ -2,7 +2,7 @@ FROM docker.io/golang:1.23.3-alpine3.20 AS build-stage
 
 WORKDIR /go/src/app
 
-ADD https://github.com/lxc/distrobuilder.git#ed79e198e5c51e1da82e3dad0dda25aaf0e79c35 .
+ADD https://github.com/lxc/distrobuilder.git#2618b5663cba70683a08c7d51bcd452e53daf24e .
 
 RUN <<EOF
 apk add --no-cache \
