@@ -13,7 +13,7 @@ EOF
 
 
 
-FROM docker.io/alpine:3.20.3 AS final-stage
+FROM docker.io/alpine:3.21.0 AS final-stage
 
 COPY --from=build-stage /go/bin/* /usr/local/bin/
 
