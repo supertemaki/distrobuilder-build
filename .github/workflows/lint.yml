@@ -64,7 +64,7 @@ jobs:
 
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           #token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           token: ${{ steps.generate-token.outputs.bot_token }}
